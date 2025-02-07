@@ -27,11 +27,33 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
+        function validateEmail(email) {
+            return /education|det/i.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 4 &&
+                /[a-z]/.test(password) &&
+                /[A-Z]/.test(password) &&
+                /\d/.test(password) &&
+                /[^a-zA-Z0-9]/.test(password);
+        }
+
         document.getElementById("authForm").addEventListener("submit", function (event) {
             event.preventDefault();
             const email = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const formTitle = document.getElementById("formTitle").textContent;
+
+            if (!validateEmail(email)) {
+                alert("Email must contain 'education' or 'det'.");
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert("Password must be at least 4 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.");
+                return;
+            }
 
             if (formTitle === "Register") {
                 createUserWithEmailAndPassword(auth, email, password)
