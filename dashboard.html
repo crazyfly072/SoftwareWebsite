@@ -1,0 +1,233 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Technical Terminology</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .title {
+                font-size: 2.5em;
+                font-weight: bold;
+                color: #333;
+                margin: 20px 0;
+                text-align: center;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                border-bottom: 4px solid #555;
+                padding-bottom: 10px;
+            }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                max-width: 1200px;
+            }
+            .term-card {
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 250px;
+                text-align: center;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+            }
+            .term-card:hover {
+                transform: scale(1.05);
+            }
+            .term-title {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+            .term-description {
+                font-size: 1em;
+                color: #555;
+            }
+            /* Modal Styling */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                justify-content: center;
+                align-items: center;
+            }
+            .modal-content {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 50%;
+                max-width: 600px;
+                text-align: center;
+            }
+            .close-btn {
+                background-color: red;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                margin-top: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="title">Software Engineering Terminology</div>
+
+        <div class="container">
+            <div class="term-card" onclick="openModal('pwa')">
+                <div class="term-title">Progressive Web Apps (PWA)</div> 
+            </div>
+            <div class="term-card" onclick="openModal('encryption')">
+                <div class="term-title">Encryption Keys & Hash Values</div>
+            </div>
+            <div class="term-card" onclick="openModal('digital-signatures')">
+                <div class="term-title">Digital Signatures</div>
+            </div>
+            <div class="term-card" onclick="openModal('data-mining')">
+                <div class="term-title">Data Mining</div>
+            </div>
+            <div class="term-card" onclick="openModal('streaming-service-management')">
+                <div class="term-title">Streaming Service Management</div>
+            </div>
+            <div class="term-card" onclick="openModal('data-packets-metadata')">
+                <div class="term-title">Data Packets Metadata</div>
+            </div>
+            <div class="term-card" onclick="openModal('dns')">
+                <div class="term-title">Domain Name Systems(DNS)</div>
+            </div>
+            <div class="term-card" onclick="openModal('ssl-certificates')">
+                <div class="term-title">Secure Sockets Layer (SSL) Certificates</div>
+            </div>
+            <div class="term-card" onclick="openModal('http-https')">
+                <div class="term-title">HTTP and HTTPS</div>
+            </div>
+            <div class="term-card" onclick="openModal('ftp-sftp-tls')">
+                <div class="term-title">FTP, SFTP, and TLS</div>
+            </div>
+            <div class="term-card" onclick="openModal('tcp-ip')">
+                <div class="term-title">TCP/IP including IPv4</div>
+            </div>
+            <div class="term-card" onclick="openModal('smtp-pop3-imap')">
+                <div class="term-title">SMTP, POP3, and IMAP</div>
+            </div>
+            <div class="term-card" onclick="openModal('client-side-programming')">
+                <div class="term-title">Client-Side (Frontend) Web Programming</div>
+            </div>
+            <div class="term-card" onclick="openModal('server-side-programming')">
+                <div class="term-title">Server-Side (Backend) Web Programming</div>
+            </div>
+            <div class="term-card" onclick="openModal('orm-vs-sql')">
+                <div class="term-title">Object Relational Mapping (ORM) VS Structured Query Language (SQL)</div>
+            </div>
+
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2 id="modal-title"></h2>
+                <p id="modal-text"></p>
+                <button class="close-btn" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+
+        <script>
+            const termDetails = {
+        "pwa": {
+            title: "Progressive Web Apps (PWA)",
+            text: "Progressive Web Apps are web applications that use modern web capabilities to provide a fast, engaging, and reliable user experience. They can work offline, send push notifications, and be installed on devices like native apps. PWAs use service workers, responsive design, and caching strategies to enhance performance and usability."
+        },
+        "encryption": {
+            title: "Encryption Keys & Hash Values",
+            text: "Encryption keys are secret codes used to encrypt and decrypt data, ensuring security and privacy. Hash values are unique fixed-length outputs generated from data using cryptographic hash functions. They are used to verify data integrity, as even a small change in input results in a vastly different hash."
+        },
+        "digital-signatures": {
+            title: "Digital Signatures",
+            text: "A digital signature is a cryptographic mechanism used to validate the authenticity and integrity of digital messages or documents. It uses public and private key encryption to ensure that a document has not been altered. Digital signatures are widely used in securing emails, software distribution, and legal documents."
+        },
+        "data-mining": {
+            title: "Data Mining",
+            text: "Data mining involves analyzing large data sets to identify patterns, trends, and relationships. It is commonly used in AI, business analytics, and fraud detection. Techniques such as clustering, classification, and association rules help businesses gain insights and make informed decisions."
+        },
+        "streaming-service-management": {
+            title: "Streaming Service Management",
+            text: "Streaming service management refers to the process of optimizing and delivering digital media content over the internet in real time. It involves adaptive bitrate streaming, content delivery networks (CDNs), and user access control to ensure smooth playback. Popular platforms include Netflix, YouTube, and Twitch."
+        },
+        "data-packets-metadata": {
+            title: "Data Packets and Metadata",
+            text: "Data packets are small units of data transmitted over a network. Each packet contains a header with metadata such as source and destination addresses, packet sequence number, and error-checking information. Metadata helps ensure proper routing and assembly of packets into a complete message."
+        },
+        "dns": {
+            title: "Domain Name Systems (DNS)",
+            text: "The Domain Name System (DNS) translates human-readable domain names (e.g., www.example.com) into IP addresses. DNS servers act like phonebooks, helping users access websites without memorizing complex numerical addresses. DNS plays a crucial role in internet connectivity and website accessibility."
+        },
+        "ssl-certificates": {
+            title: "Secure Sockets Layer (SSL) Certificates",
+            text: "SSL certificates are digital certificates that authenticate website identities and enable encrypted connections using HTTPS. They secure data transmission between users and websites, preventing eavesdropping and man-in-the-middle attacks. SSL has evolved into TLS (Transport Layer Security) for improved security."
+        },
+        "http-https": {
+            title: "HTTP and HTTPS",
+            text: "Hypertext Transfer Protocol (HTTP) and its secure counterpart (HTTPS) are protocols for data communication over the web. HTTPS uses SSL/TLS encryption to protect data integrity and confidentiality, making it essential for secure online transactions, login forms, and sensitive communications."
+        },
+        "ftp-sftp-tls": {
+            title: "FTP, SFTP, and TLS",
+            text: "File Transfer Protocol (FTP) is used for transferring files between computers over a network. Secure FTP (SFTP) encrypts data transfers using SSH, while Transport Layer Security (TLS) enhances encryption for various protocols, ensuring secure communication over the internet."
+        },
+        "tcp-ip": {
+            title: "TCP/IP including IPv4",
+            text: "The Transmission Control Protocol/Internet Protocol (TCP/IP) is the foundation of internet communication. TCP ensures reliable data transfer, while IP handles addressing and routing. IPv4 is the most widely used version, assigning numerical addresses (e.g., 192.168.1.1) to devices for internet connectivity."
+        },
+        "smtp-pop3-imap": {
+            title: "SMTP, POP3, and IMAP",
+            text: "Simple Mail Transfer Protocol (SMTP) is used for sending emails, while Post Office Protocol 3 (POP3) and Internet Message Access Protocol (IMAP) are used for retrieving emails. POP3 downloads emails locally, whereas IMAP syncs messages across multiple devices for better accessibility."
+        },
+        "client-side-programming": {
+            title: "Client-Side (Frontend) Web Programming",
+            text: "Client-side web programming focuses on creating interactive and responsive web applications using technologies like HTML, CSS, and JavaScript. It runs in the user's browser and handles UI rendering, animations, and dynamic content updates without needing server requests."
+        },
+        "server-side-programming": {
+            title: "Server-Side (Backend) Web Programming",
+            text: "Server-side web programming involves processing user requests, managing databases, and handling business logic using languages like Python, PHP, Node.js, and Java. Unlike client-side programming, it runs on the web server, ensuring security, scalability, and database interaction."
+        },
+        "orm-vs-sql": {
+            title: "Compare Object Relational Mapping (ORM) to Structured Query Language (SQL)",
+            text: "Object Relational Mapping (ORM) allows developers to interact with databases using object-oriented paradigms instead of raw SQL queries. While SQL provides precise control over queries, ORM automates data handling, reduces code complexity, and improves maintainability in web applications."
+        }
+    };
+
+
+            function openModal(term) {
+                document.getElementById("modal-title").textContent = termDetails[term].title;
+                document.getElementById("modal-text").textContent = termDetails[term].text;
+                document.getElementById("modal").style.display = "flex";
+            }
+
+            function closeModal() {
+                document.getElementById("modal").style.display = "none";
+            }
+        </script>
+
+    </body>
+    </html>
