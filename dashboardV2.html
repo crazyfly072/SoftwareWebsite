@@ -1,0 +1,376 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Technical Terminology</title>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+            <style>
+                /* General Styles */
+                body {
+                    font-family: 'Roboto', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    min-height: 100vh;
+                    background-color: #f9fafb;
+                    color: #333;
+                    transition: background-image 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+                }
+
+                a {
+                    color: #007BFF;
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                /* Sidebar Styles */
+                .sidebar {
+                    width: 250px;
+                    background: url('BackgroundLight.jpg') no-repeat;
+                    background-position: 50% 50%;
+                    color: #fff;
+                    padding: 20px;
+                    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                    position: fixed;
+                    height: 100%;
+                    overflow-y: auto;
+                }
+
+                .sidebar h2 {
+                    font-size: 1.5em;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    color: #2c3e50;
+                }
+
+                .sidebar ul {
+                    list-style: none;
+                    padding: 0;
+                    color: #2c3e50;
+                }
+
+                .sidebar ul li {
+                    margin: 15px 0;
+                    color: #2c3e50;
+                }
+
+                .sidebar ul li a {
+                    color: #2c3e50;
+                    font-size: 1em;
+                    display: block;
+                    padding: 10px;
+                    border-radius: 5px;
+                    transition: background-color 0.3s ease;
+                }
+
+                .sidebar ul li a:hover {
+                    background-color: #34495e;
+                }
+
+                /* Main Content Styles */
+                .main-content {
+                    margin-left: 260px;
+                    padding: 40px;
+                    flex-grow: 1;
+                    background-color: #fff;
+                }
+
+                .main-content h1 {
+                    font-size: 2.5em;
+                    margin-bottom: 20px;
+                    color: #2c3e50;
+                }
+
+                .term-section {
+                    margin-bottom: 40px;
+
+                }
+
+                .term-section h2 {
+                    font-size: 3em;
+                    margin-bottom: 10px;
+                    color: #2c3e50;
+                }
+
+                .term-section p {
+                    font-size: 1.1em;
+                    line-height: 1.6;
+                    color: #555;
+                }
+
+                .term-section img {
+                    max-width: 50%;
+                    height: auto;
+                    margin: 20px 0;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+
+                .term-section a {
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 10px 15px;
+                    background-color: #2a93c9;
+                    color: #fff;
+                    border-radius: 5px;
+                    transition: background-color 0.3s ease;
+                }
+
+                .term-section a:hover {
+                    background-color: #0056b3;
+                }
+                /* Dark Mode Styles */
+    .dark-mode {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+
+    .dark-mode .sidebar {
+        background: url('BackgroundDark.jpg') no-repeat;
+        background-position: 30% 10%;
+        color: #f0f0f0;
+    }
+    .dark-mode .sidebar a,
+    .dark-mode .sidebar h2 {
+        color: #f0f0f0;
+    }
+
+    .dark-mode .main-content h1,
+    .dark-mode .main-content h2,
+    .dark-mode .main-content h3,
+    .dark-mode .main-content h4,
+    .dark-mode .main-content h5,
+    .dark-mode .main-content p,
+    .dark-mode .main-content h6 {
+        color: #f0f0f0; /* Headings in dark mode */
+    }
+
+    .dark-mode .main-content {
+        background-color: #0e0f2b;
+        color: #ffffff;
+    }
+
+    .dark-mode .term-section {
+        background-color: #0e0f2b;
+        color: #f0f0f0;
+    }
+
+    .dark-mode .term-section a {
+        background-color: #0056b3;
+        color: #fff;
+    }
+
+    .dark-mode .term-section a:hover {
+        background-color: #007BFF;
+    }
+
+    /* Dark mode toggle button */
+    .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #2c3e50;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+    }
+
+    .dark-mode-toggle:hover {
+        background-color: #34495e;
+    }
+
+    .dark-mode .dark-mode-toggle {
+        background-color: #444;
+        color: #fff;
+    }
+
+                /* Responsive Design */
+                @media (max-width: 768px) {
+                    .sidebar {
+                        width: 100%;
+                        height: auto;
+                        position: relative;
+                    }
+
+                    .main-content {
+                        margin-left: 0;
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <i class='bx bx-moon'></i> <!-- Moon icon for dark mode -->
+            </button>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h2>Software Engineering Terminology</h2>
+                <ul>
+                    <li><a href="#pwa">Progressive Web Apps (PWA)</a></li>
+                    <li><a href="#encryption">Encryption Keys & Hash Values</a></li>
+                    <li><a href="#digital-signatures">Digital Signatures</a></li>
+                    <li><a href="#data-mining">Data Mining</a></li>
+                    <li><a href="#streaming-service-management">Streaming Service Management</a></li>
+                    <li><a href="#data-packets-metadata">Data Packets Metadata</a></li>
+                    <li><a href="#dns">Domain Name Systems (DNS)</a></li>
+                    <li><a href="#ssl-certificates">SSL Certificates</a></li>
+                    <li><a href="#http-https">HTTP and HTTPS</a></li>
+                    <li><a href="#ftp-sftp-tls">FTP, SFTP, and TLS</a></li>
+                    <li><a href="#tcp-ip">TCP/IP including IPv4</a></li>
+                    <li><a href="#smtp-pop3-imap">SMTP, POP3, and IMAP</a></li>
+                    <li><a href="#client-side-programming">Client-Side Programming</a></li>
+                    <li><a href="#server-side-programming">Server-Side Programming</a></li>
+                    <li><a href="#orm-vs-sql">ORM vs SQL</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h1>Software Engineering Terminology</h1>
+
+                <!-- Term Sections -->
+                <div id="pwa" class="term-section">
+                    <h2>Progressive Web Apps (PWA)</h2>
+                    <p>Progressive Web Apps (PWAs) are web applications that leverage modern web technologies to deliver a native app-like experience. They are designed to work on any platform that uses a standards-compliant browser, including both desktop and mobile devices. PWAs are built using core web technologies like HTML, CSS, and JavaScript, but they incorporate advanced features such as service workers, web manifests, and responsive design to enhance performance and usability. One of the key advantages of PWAs is their ability to work offline or in low-network conditions, thanks to service workers that cache essential resources. Additionally, PWAs can be installed on a user's device without the need for an app store, and they can send push notifications to re-engage users. Companies like Twitter, Pinterest, and Starbucks have successfully implemented PWAs, resulting in increased user engagement and improved performance. PWAs are a cost-effective solution for businesses looking to provide a seamless user experience across multiple platforms without the need for separate native apps.</p>
+                    <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fmceum5ci5reu8ew51yu2.gif" alt="PWA">
+                    <br><a href="https://web.dev/progressive-web-apps/" target="_blank">Learn More</a>
+                </div>
+
+                <div id="encryption" class="term-section">
+                    <h2>Encryption Keys & Hash Values</h2>
+                    <p>Progressive Web Apps (PWAs) are web applications that leverage modern web technologies to deliver a native app-like experience. They are designed to work on any platform that uses a standards-compliant browser, including both desktop and mobile devices. PWAs are built using core web technologies like HTML, CSS, and JavaScript, but they incorporate advanced features such as service workers, web manifests, and responsive design to enhance performance and usability. One of the key advantages of PWAs is their ability to work offline or in low-network conditions, thanks to service workers that cache essential resources. Additionally, PWAs can be installed on a user's device without the need for an app store, and they can send push notifications to re-engage users. Companies like Twitter, Pinterest, and Starbucks have successfully implemented PWAs, resulting in increased user engagement and improved performance. PWAs are a cost-effective solution for businesses looking to provide a seamless user experience across multiple platforms without the need for separate native apps.</p>
+                    <img src="https://cdn-icons-gif.flaticon.com/6569/6569133.gif" alt="Encryption">
+                    <br><a href="https://www.cloudflare.com/learning/ssl/what-is-encryption/" target="_blank">Learn More</a>
+                </div>
+                <div id="digital-signatures" class="term-section">
+                    <h2>Digital Signatures</h2>
+                    <p>Digital signatures are a cryptographic tool used to verify the authenticity and integrity of digital messages or documents. They function similarly to handwritten signatures but offer a higher level of security. A digital signature is created using a private key, which is unique to the signer. The recipient of the signed document can use the signer's public key to verify the signature's authenticity. Digital signatures rely on public key infrastructure (PKI) to ensure that the document has not been altered since it was signed. They are widely used in various applications, including secure email communication, software distribution, and electronic contracts. For example, when you download software, a digital signature ensures that the software comes from a trusted source and has not been tampered with. Digital signatures also play a crucial role in legal and financial transactions, providing a secure and legally binding way to sign documents electronically.</p>
+                    <img src="https://media.licdn.com/dms/image/v2/D4D22AQHT_lELLDNZ-g/feedshare-shrink_800/B4DZTSdFtcHIAk-/0/1738697639291?e=2147483647&v=beta&t=5UyX957_GmeEeeVnyiNk37-_ywAh6LmAqhqhvldzWrE" alt="Encryption">
+                    <br><a href="https://www.digicert.com/faq/signature-trust/what-is-an-electronic-signature" target="_blank">Learn More</a>
+                </div>
+
+
+            <div id="data-mining" class="term-section">
+                <h2>Data Mining</h2>
+                <p>Data mining is the process of discovering patterns, correlations, and anomalies within large data sets to predict outcomes and extract valuable insights. It involves a combination of statistical analysis, machine learning, and database systems to sift through vast amounts of data. Data mining techniques include clustering, classification, regression, and association rule learning. These techniques are used in various industries, such as retail, finance, healthcare, and marketing, to make data-driven decisions. For example, retailers use data mining to analyze customer purchasing behavior and optimize inventory management. In healthcare, data mining helps identify trends in patient data to improve diagnosis and treatment. Despite its benefits, data mining raises ethical concerns, particularly regarding privacy and data security. Organizations must ensure that they comply with data protection regulations and use data mining responsibly to avoid misuse of sensitive information.</p>
+                <img src="https://pridan.in/wp-content/uploads/2023/07/datam.gif" alt="Data Mining">
+                <br><a href="https://www.ibm.com/cloud/learn/data-mining" target="_blank">Learn More</a>
+            </div>
+
+
+            <div id="streaming-service-management" class="term-section">
+                <h2>Streaming Service Management</h2>
+                <p>Streaming service management involves the technical and operational processes required to deliver digital media content over the internet in real time. This includes video, audio, and live streaming services. Key components of streaming service management include content delivery networks (CDNs), adaptive bitrate streaming, and user access control. CDNs distribute content across multiple servers worldwide to reduce latency and improve playback quality. Adaptive bitrate streaming adjusts the quality of the stream in real time based on the user's internet connection, ensuring a smooth viewing experience. Streaming platforms like Netflix, YouTube, and Twitch rely on these technologies to deliver high-quality content to millions of users simultaneously. Effective streaming service management also involves monitoring and analytics to track performance, identify issues, and optimize the user experience. As the demand for streaming services continues to grow, advancements in technology are enabling higher resolutions, lower latency, and more interactive features.</p>
+                <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe8362079-b1a7-4e39-ac5a-d665ca3b2231_1280x1664.gif" alt="Streaming Service Management">
+                <br><a href="https://www.streamingmedia.com/Articles/Editorial/What-Is-Streaming-Media-78221.aspx" target="_blank">Learn More</a>
+            </div>
+
+            <div id="data-packets-metadata" class="term-section">
+                <h2>Data Packets and Metadata</h2>
+                <p>Data packets are the fundamental units of data transmitted over a network. Each packet contains a header with metadata, which includes information such as the source and destination IP addresses, packet sequence number, and error-checking data. The metadata ensures that packets are routed correctly and reassembled in the proper order at the destination. Data packets are used in various communication protocols, including TCP/IP, to ensure reliable and efficient data transmission. The process of breaking data into packets, transmitting them, and reassembling them is known as packet switching. This method allows for efficient use of network resources and enables multiple devices to share the same communication channel. Metadata plays a crucial role in network management, troubleshooting, and security. For example, network administrators can use metadata to monitor traffic patterns, detect anomalies, and prevent unauthorized access.</p>
+                <img src="https://www.cgstowernetworks.com/wp-content/uploads/2023/08/Optimize-SIEM.gif" alt="Data Packets and Metadata">
+                <br><a href="https://www.cloudflare.com/learning/network-layer/what-is-a-data-packet/" target="_blank">Learn More</a>
+            </div>
+
+            <div id="dns" class="term-section">
+                <h2>Domain Name Systems (DNS)</h2>
+                <p>The Domain Name System (DNS) is a hierarchical and decentralized naming system used to translate human-readable domain names (e.g., www.example.com) into IP addresses that computers can understand. DNS acts like a phonebook for the internet, allowing users to access websites without needing to remember complex numerical addresses. When you enter a domain name in your browser, a DNS query is sent to a DNS server, which returns the corresponding IP address. DNS servers are organized into a global network, with root servers at the top, followed by top-level domain (TLD) servers, and authoritative name servers. DNS plays a critical role in internet connectivity and website accessibility. However, it is also a target for cyberattacks, such as DNS spoofing and cache poisoning. To enhance security, technologies like DNSSEC (DNS Security Extensions) have been developed to authenticate DNS responses and prevent tampering.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D22AQEyAEPziA-nqg/feedshare-shrink_800/feedshare-shrink_800/0/1733734365715?e=2147483647&v=beta&t=gSLjeZe8jOr6NoDYiXXO_YHQUw_G0SL_1YEcRNGYZ4A" alt="DNS">
+                <br><a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">Learn More</a>
+            </div>
+
+            <div id="ssl-certificates" class="term-section">
+                <h2>Secure Sockets Layer (SSL) Certificates</h2>
+                <p>Secure Sockets Layer (SSL) certificates are digital certificates that authenticate the identity of a website and enable encrypted communication between the user's browser and the web server. SSL certificates use public key cryptography to establish a secure connection, ensuring that data transmitted between the user and the website remains private and tamper-proof. When a website has an SSL certificate, its URL begins with 'https://' instead of 'http://', and a padlock icon is displayed in the browser's address bar. SSL certificates are essential for securing online transactions, login forms, and sensitive communications. Over time, SSL has evolved into Transport Layer Security (TLS), which offers improved security features. However, the term 'SSL' is still commonly used to refer to both SSL and TLS certificates. Websites without SSL certificates are considered insecure and may be flagged by browsers, potentially deterring users from visiting the site.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQEBOtEC09ylxA/feedshare-shrink_800/feedshare-shrink_800/0/1697097091312?e=2147483647&v=beta&t=61JUctVjXjrnrv9wJ1KDgTQyCA21zBjZlvL_Dvxx9J8" alt="SSL Certificates">
+                <br><a href="https://www.digicert.com/what-is-an-ssl-certificate" target="_blank">Learn More</a>
+            </div>
+
+            <div id="http-https" class="term-section">
+                <h2>HTTP and HTTPS</h2>
+                <p>Hypertext Transfer Protocol (HTTP) and its secure counterpart, HTTPS, are the foundation of data communication on the World Wide Web. HTTP is a protocol used for transmitting web pages and other content between a web server and a client (usually a web browser). However, HTTP is not secure, as data is transmitted in plaintext, making it vulnerable to interception and tampering. HTTPS addresses this issue by using SSL/TLS encryption to protect data integrity and confidentiality. When you visit a website using HTTPS, your browser and the web server establish a secure connection, ensuring that all data exchanged is encrypted. HTTPS is essential for securing online transactions, login forms, and sensitive communications. Most modern browsers now flag websites that do not use HTTPS as insecure, encouraging website owners to adopt HTTPS to protect their users' data.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D5622AQFrReeBMLkhsg/feedshare-shrink_800/feedshare-shrink_800/0/1700821436673?e=2147483647&v=beta&t=bO5oq-t9UfllG-Z7Tl9OnFG3yYdwOWW31UGG9gqG51Q" alt="HTTP and HTTPS">
+                <br><a href="https://www.cloudflare.com/learning/ssl/why-is-http-not-secure/" target="_blank">Learn More</a>
+            </div>
+
+            <div id="ftp-sftp-tls" class="term-section">
+                <h2>FTP, SFTP, and TLS</h2>
+                <p>File Transfer Protocol (FTP) is a standard network protocol used for transferring files between a client and a server over a network. FTP is widely used for uploading files to web servers and downloading files from remote servers. However, FTP is not secure, as it transmits data, including usernames and passwords, in plaintext. Secure FTP (SFTP) addresses this issue by using SSH (Secure Shell) to encrypt data transfers, providing a secure alternative to FTP. Another secure option is FTP over TLS (FTPS), which uses Transport Layer Security to encrypt the connection. Both SFTP and FTPS are widely used for secure file transfers, with SFTP being more common due to its simplicity and compatibility with SSH. When choosing a file transfer protocol, it is important to consider security requirements and the specific use case.</p>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240110113246/File-Transfer-Protocol-and-HTTPS-gif-2.gif" alt="FTP, SFTP, and TLS">
+                <br><a href="https://www.digitalocean.com/community/tutorials/what-is-ftp-sftp" target="_blank">Learn More</a>
+            </div>
+
+            <div id="tcp-ip" class="term-section">
+                <h2>TCP/IP including IPv4</h2>
+                <p>The Transmission Control Protocol/Internet Protocol (TCP/IP) is the foundational communication protocol of the internet. TCP/IP is a suite of protocols that enables devices to communicate over a network. TCP is responsible for ensuring reliable data delivery by establishing a connection, breaking data into packets, and reassembling them at the destination. IP, on the other hand, handles addressing and routing, ensuring that packets are delivered to the correct destination. IPv4 is the most widely used version of IP, using 32-bit addresses (e.g., 192.168.1.1) to identify devices on a network. However, the limited number of IPv4 addresses has led to the development of IPv6, which uses 128-bit addresses to accommodate the growing number of internet-connected devices. TCP/IP is essential for internet communication, enabling everything from web browsing to email and file transfers.</p>
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240226095336/TCP-Gif.gif" alt="TCP/IP">
+                <br><a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">Learn More</a>
+            </div>
+
+            <div id="smtp-pop3-imap" class="term-section">
+                <h2>SMTP, POP3, and IMAP</h2>
+                <p>Simple Mail Transfer Protocol (SMTP), Post Office Protocol 3 (POP3), and Internet Message Access Protocol (IMAP) are the primary protocols used for email communication. SMTP is used for sending emails from a client to a server and between servers. POP3 and IMAP are used for retrieving emails from a server to a client. POP3 downloads emails to the client's device and typically deletes them from the server, making it suitable for users who access email from a single device. IMAP, on the other hand, syncs emails across multiple devices, keeping them stored on the server. This makes IMAP ideal for users who access email from multiple devices. Both POP3 and IMAP have their advantages, and the choice between them depends on the user's needs and preferences. SMTP, POP3, and IMAP work together to enable seamless email communication, ensuring that emails are sent, received, and stored securely.</p>
+                <img src="https://www.atatus.com/blog/content/images/2023/01/smtp-workflow.gif" alt="SMTP, POP3, and IMAP">
+                <br><a href="https://www.cloudflare.com/learning/email-security/what-is-smtp/" target="_blank">Learn More</a>
+            </div>
+
+            <div id="client-side-programming" class="term-section">
+                <h2>Client-Side (Frontend) Web Programming</h2>
+                <p>Client-side web programming, also known as frontend development, focuses on creating the user interface and user experience of a web application. It involves using technologies like HTML, CSS, and JavaScript to build interactive and responsive web pages. Client-side code runs in the user's browser, enabling dynamic content updates, animations, and user interactions without requiring server requests. Popular frontend frameworks and libraries, such as React, Angular, and Vue.js, have simplified the development process and improved performance. Client-side programming is essential for creating engaging and user-friendly web applications. However, it also presents challenges, such as browser compatibility issues and security vulnerabilities. Developers must ensure that client-side code is optimized for performance and secure from attacks like cross-site scripting (XSS).</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4E22AQHuloBoqtTdBA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1729136649422?e=2147483647&v=beta&t=uWa4NoG93t_grycKwiFTIVHCZBFIQ-WLOxatXoLpnco" alt="Client-Side Programming">
+                <br><a href="https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer" target="_blank">Learn More</a>
+            </div>
+
+            <div id="server-side-programming" class="term-section">
+                <h2>Server-Side (Backend) Web Programming</h2>
+                <p>Server-side web programming, also known as backend development, involves processing user requests, managing databases, and handling business logic on the web server. Unlike client-side programming, server-side code runs on the server and is responsible for tasks like authentication, data storage, and API integration. Popular server-side programming languages include Python, PHP, Node.js, Ruby, and Java. Backend developers use frameworks like Django, Laravel, Express, and Spring to streamline development and improve scalability. Server-side programming is crucial for ensuring the security, performance, and reliability of web applications. It also enables integration with third-party services and databases, making it a key component of modern web development. However, backend developers must be mindful of security risks, such as SQL injection and data breaches, and implement best practices to protect sensitive data.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4E22AQHuloBoqtTdBA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1729136649422?e=2147483647&v=beta&t=uWa4NoG93t_grycKwiFTIVHCZBFIQ-WLOxatXoLpnco" alt="Server-Side Programming">
+                <br><a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side" target="_blank">Learn More</a>
+            </div>
+
+            <div id="orm-vs-sql" class="term-section">
+                <h2>Compare Object Relational Mapping (ORM) to Structured Query Language (SQL)</h2>
+                <p>Object Relational Mapping (ORM) and Structured Query Language (SQL) are two approaches to interacting with databases in web development. SQL is a standard language for querying and manipulating relational databases, offering precise control over data operations. ORM, on the other hand, allows developers to interact with databases using object-oriented programming paradigms, abstracting away the complexities of SQL. ORM frameworks, such as Hibernate (Java), Entity Framework (C#), and Sequelize (Node.js), automate data handling and reduce the need for writing raw SQL queries. While SQL provides greater flexibility and performance for complex queries, ORM simplifies development and improves code maintainability. The choice between ORM and SQL depends on the project's requirements, with ORM being ideal for rapid development and SQL being preferred for performance-critical applications. Both approaches have their strengths and are often used together in modern web development.</p>
+                <img src="https://miro.medium.com/v2/resize:fit:1400/1*KKYtUxsP4_0T-EDEKdDd0Q.gif" alt="ORM vs SQL">
+                <br><a href="https://www.freecodecamp.org/news/what-is-an-orm-the-meaning-of-object-relational-mapping-database-tools/" target="_blank">Learn More</a>
+            </div>
+
+            </div>
+            <script>
+        // JavaScript for Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Check user preference from localStorage
+        if (localStorage.getItem('dark-mode')) {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = "<i class='bx bx-sun'></i>"; // Sun icon for light mode
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+                darkModeToggle.innerHTML = "<i class='bx bx-sun'></i>"; // Sun icon for light mode
+            } else {
+                localStorage.removeItem('dark-mode');
+                darkModeToggle.innerHTML = "<i class='bx bx-moon'></i>"; // Moon icon for dark mode
+            }
+        });
+    </script>
+
+        </body>
+        </html>
